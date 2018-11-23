@@ -41,14 +41,9 @@ class Post {
         
         $req = $db->prepare('INSERT INTO posts SET author = :author, content = :content, titol = :titol, image = :image');
 
-        $req->execute(array('author' => $author));
-        $req->execute(array('content' => $content));
-        $req->execute(array('titol' => $titol));
-        $req->execute(array('image' => $image));
+        $req->execute(array('author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image));
         
-        $insert= $req->execute();
-        
-        return $insert;
+        return $req;
     }
 }
 ?>
