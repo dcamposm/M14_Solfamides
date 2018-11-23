@@ -33,5 +33,30 @@ class PostsController {
 
         require_once('views/posts/formInsert.php');
     }
+    
+    public function formUpdate() {
+        if (!isset($_GET['id'])) {
+            return call('pages', 'error');
+        }
+        // utilizamos el id para obtener el post correspondiente
+        $post = Post::find($_GET['id']);
+        
+        require_once('views/posts/formUpdate.php');
+    }
+    
+    public function update() {
+        if (!isset($_POST['author'])){
+            return call('pages', 'error');
+        }
+
+        $image=!empty($_FILES["image"]["author"])
+            ? sha1_file($_FILES['image']['tmp_author']) . "-" . basename($_FILES["image"]["author"]) : "";
+        
+        $post = Post::modificar($_GET['id'], $_POST['author'], $_POST['content'], $_POST['titol'], $image);
+        
+        $posts = Post::all();
+        
+        require_once('views/posts/index.php');
+    }
 }
 ?>

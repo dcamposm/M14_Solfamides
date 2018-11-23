@@ -45,5 +45,15 @@ class Post {
         
         return $req;
     }
+    
+    public static function modificar($id, $author, $content, $titol, $image) {
+        $db = Db::getInstance();
+        
+        $req = $db->prepare('UPDATE posts SET author = :author, content = :content, titol = :titol, image = :image WHERE id = :id');
+
+        $req->execute(array('id' => $id,'author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image));
+        
+        return $req;
+    }
 }
 ?>

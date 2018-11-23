@@ -14,10 +14,10 @@
             <td>Post</td>
             <td><textarea name='content' class='form-control'></textarea></td>
         </tr>
- 		<tr>
-		    <td>Imagen</td>
-		    <td><input type="file" name="image" /></td>
-		</tr>
+            <tr>
+                <td>Imagen</td>
+                <td><input type="file" name="image" /></td>
+            </tr>
         <tr>
             <td></td>
             <td>
