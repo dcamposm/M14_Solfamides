@@ -5,6 +5,8 @@ class Post {
     public $id;
     public $author;
     public $content;
+    public $titol;
+    public $image;
 
     public function __construct($id, $author, $content, $titol, $image) {
         $this->id = $id;
@@ -20,7 +22,7 @@ class Post {
         $req = $db->query('SELECT * FROM posts');
         // creamos una lista de objectos post y recorremos la respuesta de la consulta
         foreach($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image']);
+            $list[] = new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
         }
         return $list;
     }
