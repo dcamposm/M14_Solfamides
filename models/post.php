@@ -55,5 +55,16 @@ class Post {
         
         return $req;
     }
+    
+    public static function eliminar($id) {
+        $db = Db::getInstance();
+        // nos aseguramos que $id es un entero
+        $id = intval($id);
+        $req = $db->prepare('DELETE FROM posts WHERE id = :id');
+        // preparamos la sentencia y reemplazamos :id con el valor de $id
+        $req->execute(array('id' => $id));
+
+        return $req;
+    }
 }
 ?>

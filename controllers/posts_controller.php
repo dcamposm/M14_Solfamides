@@ -58,5 +58,17 @@ class PostsController {
         
         require_once('views/posts/index.php');
     }
+    
+    public function delete() {
+        // esperamos una url del tipo ?controller=posts&action=show&id=x
+        // si no nos pasan el id redirecionamos hacia la pagina de error, el id tenemos que buscarlo en la BBDD
+        if (!isset($_GET['id'])) {
+            return call('pages', 'error');
+        }
+        // utilizamos el id para obtener el post correspondiente
+        $post = Post::eliminar($_GET['id']);
+        $posts = Post::all();
+        require_once('views/posts/index.php');
+    }
 }
 ?>
