@@ -14,7 +14,7 @@ function call($controller, $action) {
         break;
     case 'categoria':
         require_once('models/categoria.php');
-        $controller = new CatgeoriaController();
+        $controller = new CategeoriaController();
         break;
     }
     // llama al método guardado en $action
@@ -25,7 +25,7 @@ function call($controller, $action) {
 // agregando una entrada para el nuevo controlador y sus acciones.
 $controllers = array( 'pages' => ['home', 'error'],
                       'posts' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete'],
-                      'categoria' => ['index']);
+                      'categoria' => ['index', 'show', 'formCreate', 'create']);
 // verifica que tanto el controlador como la acción solicitados estén permitidos
 // Si alguien intenta acceder a otro controlador y/o acción, será redirigido al método de error del controlador de pages.
 if (array_key_exists($controller, $controllers)) {

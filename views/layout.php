@@ -8,6 +8,7 @@
             <a href='?controller=posts&action=index'>Posts</a>
             <a href='?controller=categoria&action=index'>Categorias</a>
             <a href='?controller=posts&action=formCreate'>Afegir post</a>
+            <a href='?controller=categoria&action=formCreate'>Afegir categoria</a>
 
         </header>
                 <?php require_once('routes.php'); ?>
