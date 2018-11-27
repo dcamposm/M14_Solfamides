@@ -14,6 +14,8 @@ class PostsController {
         }
         // utilizamos el id para obtener el post correspondiente
         $post = Post::find($_GET['id']);
+        $cat = Categoria::find($post->id_categoria);
+        //$categoria = $post->id_categoria;
         require_once('views/posts/show.php');
     }
 
@@ -29,7 +31,7 @@ class PostsController {
         $image=!empty($_FILES["image"]["author"])
             ? sha1_file($_FILES['image']['tmp_author']) . "-" . basename($_FILES["image"]["author"]) : "";
 
-        $post = Post::insert($_POST['author'], $_POST['content'], $_POST['titol'], $image);
+        Post::insert($_POST['author'], $_POST['content'], $_POST['titol'], $image);
 
         require_once('views/posts/formInsert.php');
     }
@@ -52,7 +54,7 @@ class PostsController {
         $image=!empty($_FILES["image"]["author"])
             ? sha1_file($_FILES['image']['tmp_author']) . "-" . basename($_FILES["image"]["author"]) : "";
         
-        $post = Post::modificar($_GET['id'], $_POST['author'], $_POST['content'], $_POST['titol'], $image);
+        Post::modificar($_GET['id'], $_POST['author'], $_POST['content'], $_POST['titol'], $image);
         
         $posts = Post::all();
         
@@ -60,13 +62,11 @@ class PostsController {
     }
     
     public function delete() {
-        // esperamos una url del tipo ?controller=posts&action=show&id=x
-        // si no nos pasan el id redirecionamos hacia la pagina de error, el id tenemos que buscarlo en la BBDD
         if (!isset($_GET['id'])) {
             return call('pages', 'error');
         }
-        // utilizamos el id para obtener el post correspondiente
-        $post = Post::eliminar($_GET['id']);
+       
+        Post::eliminar($_GET['id']);
         $posts = Post::all();
         require_once('views/posts/index.php');
     }

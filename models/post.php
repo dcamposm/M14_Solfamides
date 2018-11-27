@@ -7,13 +7,15 @@ class Post {
     public $content;
     public $titol;
     public $image;
+    public $id_categoria;
 
-    public function __construct($id, $author, $content, $titol, $image) {
+    public function __construct($id, $author, $content, $titol, $image, $id_categoria) {
         $this->id = $id;
         $this->author = $author;
         $this->content = $content;
         $this->titol = $titol;
         $this->image = $image;
+        $this->id_categoria = $id_categoria;
     }
 
     public static function all() {
@@ -35,7 +37,7 @@ class Post {
         // preparamos la sentencia y reemplazamos :id con el valor de $id
         $req->execute(array('id' => $id));
         $post = $req->fetch();
-        return new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image']);
+        return new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
     }
 
     public static function insert($author, $content, $titol, $image) {
@@ -44,8 +46,6 @@ class Post {
         $req = $db->prepare('INSERT INTO posts SET author = :author, content = :content, titol = :titol, image = :image');
 
         $req->execute(array('author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image));
-        
-        return $req;
     }
     
     public static function modificar($id, $author, $content, $titol, $image) {
@@ -54,8 +54,6 @@ class Post {
         $req = $db->prepare('UPDATE posts SET author = :author, content = :content, titol = :titol, image = :image WHERE id = :id');
 
         $req->execute(array('id' => $id,'author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image));
-        
-        return $req;
     }
     
     public static function eliminar($id) {
@@ -65,8 +63,6 @@ class Post {
         $req = $db->prepare('DELETE FROM posts WHERE id = :id');
         // preparamos la sentencia y reemplazamos :id con el valor de $id
         $req->execute(array('id' => $id));
-
-        return $req;
     }
 }
 ?>

@@ -4,8 +4,9 @@
     </head>
     <body>
         <header>
-            <a href='/m07/m07uf2/blog_php_mvc'>Home</a>
+            <a href='/blog_php_mvc'>Home</a>
             <a href='?controller=posts&action=index'>Posts</a>
+            <a href='?controller=categoria&action=index'>Categorias</a>
             <a href='?controller=posts&action=formCreate'>Afegir post</a>
 
         </header>
