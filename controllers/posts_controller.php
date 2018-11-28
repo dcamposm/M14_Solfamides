@@ -20,6 +20,8 @@ class PostsController {
     }
 
     public function formCreate() {
+        $cats = Categoria::all();
+        
         require_once('views/posts/formInsert.php');
     }
 
@@ -31,7 +33,7 @@ class PostsController {
         $image=!empty($_FILES["image"]["author"])
             ? sha1_file($_FILES['image']['tmp_author']) . "-" . basename($_FILES["image"]["author"]) : "";
 
-        Post::insert($_POST['author'], $_POST['content'], $_POST['titol'], $image);
+        Post::insert($_POST['author'], $_POST['content'], $_POST['titol'], $image, $_POST['id_categoria']);
 
         require_once('views/posts/formInsert.php');
     }
@@ -42,6 +44,7 @@ class PostsController {
         }
         // utilizamos el id para obtener el post correspondiente
         $post = Post::find($_GET['id']);
+        $cats = Categoria::all();
         
         require_once('views/posts/formUpdate.php');
     }
@@ -54,7 +57,7 @@ class PostsController {
         $image=!empty($_FILES["image"]["author"])
             ? sha1_file($_FILES['image']['tmp_author']) . "-" . basename($_FILES["image"]["author"]) : "";
         
-        Post::modificar($_GET['id'], $_POST['author'], $_POST['content'], $_POST['titol'], $image);
+        Post::modificar($_GET['id'], $_POST['author'], $_POST['content'], $_POST['titol'], $image, $_POST['id_categoria']);
         
         $posts = Post::all();
         

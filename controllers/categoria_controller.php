@@ -1,5 +1,5 @@
 <?php
-class CategeoriaController {
+class CategoriaController {
     public function index() {
         // Guardamos todos los posts en una variable
         $cats = Categoria::all();
@@ -17,26 +17,26 @@ class CategeoriaController {
     }
     
     public function formCreate() {
-        $sub_cat = Categoria::findSub();
-        
         require_once('views/categoria/formInsert.php');
     }
 
     public function create() {
-        if (!isset($_POST['author'])){
+        if (!isset($_POST['nom'])){
             return call('pages', 'error');
         }
+        
+        Categoria::insert($_POST['nom'], $_POST['sub_categoria']);
 
-        $image=!empty($_FILES["image"]["author"])
-            ? sha1_file($_FILES['image']['tmp_author']) . "-" . basename($_FILES["image"]["author"]) : "";
-
-        Post::insert($_POST['author'], $_POST['content'], $_POST['titol'], $image);
-
-        require_once('views/posts/formInsert.php');
+        require_once('views/categoria/formInsert.php');
     }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+    
+    public function delete() {
+        if (!isset($_GET['id'])) {
+            return call('pages', 'error');
+        }
+       
+        Categoria::eliminar($_GET['id']);
+        $cats = Categoria::all();
+        require_once('views/categoria/index.php');
+    }
 }

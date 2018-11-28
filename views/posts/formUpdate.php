@@ -15,10 +15,30 @@
             <td>Post</td>
             <td><textarea name='content' class='form-control'><?php echo $post->content; ?></textarea></td>
         </tr>
-            <tr>
-                <td>Imagen</td>
-                <td><input type="file" name="image" value='<?php echo $post->image; ?>'/></td>
-            </tr>
+        
+        <tr>
+            <td>Categoria</td>
+            <td>
+                <select class='form-control' name='id_categoria'>
+                    <option>Selecciona la categoria</option>
+                    <?php foreach($cats as $cat) { ?>
+                        <?php if($post->id_categoria==$cat->id){?>
+                            <option value='<?php echo $cat->id; ?>' selected>  
+                        <?php }
+                        else { ?>
+                            <option value='<?php echo $cat->id; ?>'>
+                        <?php }
+                         echo $cat->nom; ?></option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>Imagen</td>
+            <td><input type="file" name="image" value='<?php echo $post->image; ?>'/></td>
+        </tr>
+        
         <tr>
             <td></td>
             <td>

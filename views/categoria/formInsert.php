@@ -2,22 +2,22 @@
     <table>
         <tr>
             <td>Nom</td>
-            <td><input type='text' name='author' class='form-control' /></td>
+            <td><input type='text' name='nom' class='form-control' /></td>
         </tr>
  
         <tr>
             <td>Sub-categoria</td>
             <td>
-                <select class='form-control' name='category_id'>
-                    <option>Selecciona</option>
-                    <?php foreach ($sub_cat as $value) {
-                        echo "<option value=\"$value\">$value</option>";
-                    }
-                    ?>                                  
+                <select class='form-control' name='sub_categoria'>
+                    <option>Selecciona...</option>
+                    <option value='Ninguno'>Ninguno</option>
+                    <option value='Sistemas'>Sistemas</option>
+                    <option value='Programacion'>Programacion</option>
+                    <option value='Otros'>Otros</option>
                 </select>
             </td>
         </tr>
-        <tr
+        <tr>
             <td>
                 <button type="submit" class="btn btn-primary">Create</button>
             </td>

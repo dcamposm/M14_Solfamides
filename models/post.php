@@ -40,20 +40,20 @@ class Post {
         return new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
     }
 
-    public static function insert($author, $content, $titol, $image) {
+    public static function insert($author, $content, $titol, $image, $id_categoria) {
         $db = Db::getInstance();
         
-        $req = $db->prepare('INSERT INTO posts SET author = :author, content = :content, titol = :titol, image = :image');
+        $req = $db->prepare('INSERT INTO posts SET author = :author, content = :content, titol = :titol, image = :image, id_categoria = :id_categoria');
 
-        $req->execute(array('author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image));
+        $req->execute(array('author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image, 'id_categoria' => $id_categoria));
     }
     
-    public static function modificar($id, $author, $content, $titol, $image) {
+    public static function modificar($id, $author, $content, $titol, $image, $id_categoria) {
         $db = Db::getInstance();
         
-        $req = $db->prepare('UPDATE posts SET author = :author, content = :content, titol = :titol, image = :image WHERE id = :id');
+        $req = $db->prepare('UPDATE posts SET author = :author, content = :content, titol = :titol, image = :image, id_categoria = :id_categoria WHERE id = :id');
 
-        $req->execute(array('id' => $id,'author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image));
+        $req->execute(array('id' => $id,'author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image, 'id_categoria' => $id_categoria));
     }
     
     public static function eliminar($id) {
