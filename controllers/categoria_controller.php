@@ -30,6 +30,28 @@ class CategoriaController {
         require_once('views/categoria/formInsert.php');
     }
     
+    public function formUpdate() {
+        if (!isset($_GET['id'])) {
+            return call('pages', 'error');
+        }
+        // utilizamos el id para obtener el post correspondiente
+        $cat = Categoria::find($_GET['id']);
+        
+        require_once('views/categoria/formUpdate.php');
+    }
+    
+    public function update() {
+        if (!isset($_POST['nom'])){
+            return call('pages', 'error');
+        }
+
+        Categoria::modificar($_GET['id'], $_POST['nom'], $_POST['sub_categoria']);
+        
+        $cats = Categoria::all();
+        
+        require_once('views/categoria/index.php');
+    }
+    
     public function delete() {
         if (!isset($_GET['id'])) {
             return call('pages', 'error');

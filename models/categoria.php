@@ -43,6 +43,14 @@ class Categoria {
         $req->execute(array('nom' => $nom, 'sub_categoria' => $sub_categoria));
     }
     
+    public static function modificar($id, $nom, $sub_categoria) {
+        $db = Db::getInstance();
+        
+        $req = $db->prepare('UPDATE categoria SET nom = :nom, sub_categoria = :sub_categoria WHERE id = :id');
+
+        $req->execute(array('nom' => $nom, 'sub_categoria' => $sub_categoria, 'id' => $id));
+    }
+    
     public static function eliminar($id) {
         $db = Db::getInstance();
         // nos aseguramos que $id es un entero
