@@ -9,5 +9,16 @@
         $action = 'home';
     }
     
-    require_once('views/layout.php');
+    /*if(isset($_GET['url'])){
+        $url = $_GET['url']; // 'posts/index'
+
+        // Quita / innecesarias a la derecha.
+        $url= rtrim($url, '/');
+
+        // Devuelve un array utilizando la / como delimitador.
+        $url = explode('/', $url); // ['posts', 'index']
+
+        define('URL', 'http://localhost/blog_php_mvc/');
+    }*/
+            require_once('views/layout.php');
 ?>
