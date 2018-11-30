@@ -4,11 +4,11 @@
     </head>
     <body>
         <header>
-            <a href='/blog_php_mvc'>Home</a>
-            <a href='?controller=posts&action=index'>Posts</a>
-            <a href='?controller=categoria&action=index'>Categorias</a>
-            <a href='?controller=posts&action=formCreate'>Afegir post</a>
-            <a href='?controller=categoria&action=formCreate'>Afegir categoria</a>
+            <a href='<?php echo constant('URL');?>'>Home</a>
+            <a href='<?php echo constant('URL');?>posts/index'>Posts</a>
+            <a href='<?php echo constant('URL');?>categoria/index'>Categorias</a>
+            <a href='<?php echo constant('URL');?>posts/formCreate'>Afegir post</a>
+            <a href='<?php echo constant('URL');?>categoria/formCreate'>Afegir categoria</a>
         </header>
                 <?php require_once('routes.php'); ?>
         <footer>
