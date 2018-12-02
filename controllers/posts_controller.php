@@ -1,11 +1,11 @@
 <?php
 class PostsController {
     public function index() {
-        if (!isset($_POST['obj'])){
+        if (!isset($_POST['obj']) && !isset($_POST['search'])){
             $posts = Post::all();
             require_once('views/posts/index.php');
         }
-        else {
+        elseif (isset($_POST['obj'])) {
             switch ($_POST['obj']){
                 case 'author':
                     $posts = Post::ordByAuthor();
@@ -20,6 +20,10 @@ class PostsController {
                     require_once('views/posts/index.php');
                     break;
             }
+        }
+        elseif (isset($_POST['search'])) {
+            $posts = Post::search($_POST['search']);
+            require_once('views/posts/index.php');
         }
     }
 

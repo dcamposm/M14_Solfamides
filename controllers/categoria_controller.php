@@ -1,12 +1,12 @@
 <?php
 class CategoriaController {
     public function index() {
-        if (!isset($_POST['obj'])){
+        if (!isset($_POST['obj']) && !isset($_POST['search'])){
             // Guardamos todos los posts en una variable
             $cats = Categoria::all();
             require_once('views/categoria/index.php');
         }
-        else {
+        elseif (isset($_POST['obj'])) {
             switch ($_POST['obj']){
                 case 'nombre':
                     $cats = Categoria::ordByName();
@@ -18,9 +18,13 @@ class CategoriaController {
                     break;
                 case 'creacio':
                     $cats = Categoria::ordByDate();
-                    require_once('views/categoria   /index.php');
+                    require_once('views/categoria/index.php');
                     break;
             }
+        }
+        elseif (isset($_POST['search'])) {
+            $cats = Categoria::search($_POST['search']);
+            require_once('views/categoria/index.php');
         }
     }
     

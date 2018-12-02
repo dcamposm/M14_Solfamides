@@ -29,6 +29,17 @@ class Post {
         return $list;
     }
     
+    public static function search($author) {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->prepare('SELECT * FROM posts WHERE author LIKE :author');
+        $req->execute(array('author' => $author));
+        foreach($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
+        }
+        return $list;
+    }
+    
     public static function ordByAuthor() {
         $list = [];
         $db = Db::getInstance();

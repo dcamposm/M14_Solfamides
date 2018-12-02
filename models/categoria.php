@@ -24,6 +24,17 @@ class Categoria {
         return $list;
     }
     
+    public static function search($nom) {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->prepare('SELECT * FROM categoria WHERE nom LIKE :nom');
+        $req->execute(array('nom' => $nom));
+        foreach($req->fetchAll() as $cat) {
+            $list[] = new Categoria($cat['id'], $cat['nom'], $cat['sub_categoria'], $cat['creacio']);
+        }
+        return $list;
+    }
+    
     public static function ordByName() {
         $list = [];
         $db = Db::getInstance();

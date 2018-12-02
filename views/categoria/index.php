@@ -1,5 +1,6 @@
 <h2>Listado de las categorias:</h2>
 <?php require_once('ordenar.php');?>
+<?php require_once('search.php');?>
 <?php foreach($cats as $cat) { ?>
     <p class="w3-display-container w3-panel w3-border-top w3-border-bottom">
         <?php echo $cat->nom; ?>
