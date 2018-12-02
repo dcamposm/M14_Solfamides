@@ -1,9 +1,26 @@
 <?php
 class PostsController {
     public function index() {
-        // Guardamos todos los posts en una variable
-        $posts = Post::all();
-        require_once('views/posts/index.php');
+        if (!isset($_POST['obj'])){
+            $posts = Post::all();
+            require_once('views/posts/index.php');
+        }
+        else {
+            switch ($_POST['obj']){
+                case 'author':
+                    $posts = Post::ordByAuthor();
+                    require_once('views/posts/index.php');
+                    break;
+                case 'titol':
+                    $posts = Post::ordByTitol();
+                    require_once('views/posts/index.php');
+                    break;
+                case 'categoria':
+                    $posts = Post::ordByCategoria();
+                    require_once('views/posts/index.php');
+                    break;
+            }
+        }
     }
 
     public function show() {

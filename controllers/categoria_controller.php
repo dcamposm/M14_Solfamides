@@ -1,9 +1,27 @@
 <?php
 class CategoriaController {
     public function index() {
-        // Guardamos todos los posts en una variable
-        $cats = Categoria::all();
-        require_once('views/categoria/index.php');
+        if (!isset($_POST['obj'])){
+            // Guardamos todos los posts en una variable
+            $cats = Categoria::all();
+            require_once('views/categoria/index.php');
+        }
+        else {
+            switch ($_POST['obj']){
+                case 'nombre':
+                    $cats = Categoria::ordByName();
+                    require_once('views/categoria/index.php');
+                    break;
+                case 'sub_categoria':
+                    $cats = Categoria::ordBySub();
+                    require_once('views/categoria/index.php');
+                    break;
+                case 'creacio':
+                    $cats = Categoria::ordByDate();
+                    require_once('views/categoria   /index.php');
+                    break;
+            }
+        }
     }
     
     public function show() {

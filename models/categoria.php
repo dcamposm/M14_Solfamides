@@ -24,6 +24,37 @@ class Categoria {
         return $list;
     }
     
+    public static function ordByName() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM categoria ORDER BY nom ASC');
+        
+        foreach($req->fetchAll() as $cat) {
+            $list[] = new Categoria($cat['id'], $cat['nom'], $cat['sub_categoria'], $cat['creacio']);
+        }
+        return $list;
+    }
+    public static function ordBySub() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM categoria ORDER BY sub_categoria ASC');
+        
+        foreach($req->fetchAll() as $cat) {
+            $list[] = new Categoria($cat['id'], $cat['nom'], $cat['sub_categoria'], $cat['creacio']);
+        }
+        return $list;
+    }
+    public static function ordByDate() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM categoria ORDER BY creacio ASC');
+        
+        foreach($req->fetchAll() as $cat) {
+            $list[] = new Categoria($cat['id'], $cat['nom'], $cat['sub_categoria'], $cat['creacio']);
+        }
+        return $list;
+    }
+    
     public static function find($id) {
         $db = Db::getInstance();
         

@@ -21,7 +21,38 @@ class Post {
     public static function all() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM posts');
+        $req = $db->query('SELECT * FROM posts ORDER BY id');
+        // creamos una lista de objectos post y recorremos la respuesta de la consulta
+        foreach($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
+        }
+        return $list;
+    }
+    
+    public static function ordByAuthor() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM posts ORDER BY author ASC');
+        // creamos una lista de objectos post y recorremos la respuesta de la consulta
+        foreach($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
+        }
+        return $list;
+    }
+    public static function ordByTitol() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM posts ORDER BY titol ASC');
+        // creamos una lista de objectos post y recorremos la respuesta de la consulta
+        foreach($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
+        }
+        return $list;
+    }
+    public static function ordByCategoria() {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM posts ORDER BY id_categoria ASC');
         // creamos una lista de objectos post y recorremos la respuesta de la consulta
         foreach($req->fetchAll() as $post) {
             $list[] = new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
@@ -64,5 +95,7 @@ class Post {
         // preparamos la sentencia y reemplazamos :id con el valor de $id
         $req->execute(array('id' => $id));
     }
+    
+    
 }
 ?>

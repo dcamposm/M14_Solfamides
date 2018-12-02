@@ -1,4 +1,4 @@
-<form class="w3-container" action="?controller=categoria&action=create" method="post" enctype="multipart/form-data"> 
+<form class="w3-container" action="<?php echo constant('URL');?>categoria/create" method="post" enctype="multipart/form-data"> 
     <p class="w3-xlarge">Nom</p>
     <input type='text' name='nom' class="w3-input w3-border" />
 

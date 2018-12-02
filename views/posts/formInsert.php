@@ -1,4 +1,4 @@
-<form class="w3-container" action="?controller=posts&action=create" method="post" enctype="multipart/form-data"> 
+<form class="w3-container" action="<?php echo constant('URL');?>posts/create" method="post" enctype="multipart/form-data"> 
     <p class="w3-xlarge">Author</p>
     <input type='text' name='author' class="w3-input w3-border" /> 
     
