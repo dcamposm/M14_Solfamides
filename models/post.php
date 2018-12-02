@@ -17,7 +17,7 @@ class Post {
         $this->image = $image;
         $this->id_categoria = $id_categoria;
     }
-
+    //Metoda per fer select en tota la taula
     public static function all() {
         $list = [];
         $db = Db::getInstance();
@@ -28,7 +28,7 @@ class Post {
         }
         return $list;
     }
-    
+    //Metoda per filtra per author
     public static function search($author) {
         $list = [];
         $db = Db::getInstance();
@@ -39,7 +39,7 @@ class Post {
         }
         return $list;
     }
-    
+    //Metodes per ordenar
     public static function ordByAuthor() {
         $list = [];
         $db = Db::getInstance();
@@ -70,7 +70,7 @@ class Post {
         }
         return $list;
     }
-
+    //Metoda per buscar per id
     public static function find($id) {
         $db = Db::getInstance();
         // nos aseguramos que $id es un entero
@@ -81,7 +81,7 @@ class Post {
         $post = $req->fetch();
         return new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
     }
-
+    //Metoda per fer insert
     public static function insert($author, $content, $titol, $image, $id_categoria) {
         $db = Db::getInstance();
         
@@ -89,7 +89,7 @@ class Post {
 
         $req->execute(array('author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image, 'id_categoria' => $id_categoria));
     }
-    
+    //Metoda per fer update
     public static function modificar($id, $author, $content, $titol, $image, $id_categoria) {
         $db = Db::getInstance();
         
@@ -97,7 +97,7 @@ class Post {
 
         $req->execute(array('id' => $id,'author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image, 'id_categoria' => $id_categoria));
     }
-    
+    //Metoda per fer delete
     public static function eliminar($id) {
         $db = Db::getInstance();
         // nos aseguramos que $id es un entero

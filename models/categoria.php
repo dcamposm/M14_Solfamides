@@ -12,7 +12,7 @@ class Categoria {
         $this->sub_categoria = $sub_categoria;
         $this->creacio = $creacio;
     }
-    
+    //Metoda per mostrar totes les insertccions de la taula categoria
     public static function all() {
         $list = [];
         $db = Db::getInstance();
@@ -23,7 +23,7 @@ class Categoria {
         }
         return $list;
     }
-    
+    //Metoda per filtra un nom de categoria
     public static function search($nom) {
         $list = [];
         $db = Db::getInstance();
@@ -34,7 +34,7 @@ class Categoria {
         }
         return $list;
     }
-    
+    //Metodes per ordenar
     public static function ordByName() {
         $list = [];
         $db = Db::getInstance();
@@ -65,7 +65,7 @@ class Categoria {
         }
         return $list;
     }
-    
+    //Metoda per buscar per id
     public static function find($id) {
         $db = Db::getInstance();
         
@@ -76,7 +76,7 @@ class Categoria {
         $cat = $req->fetch();
         return new Categoria($cat['id'], $cat['nom'], $cat['sub_categoria'], $cat['creacio']);
     }
-    
+    //Metoda per fer insert
     public static function insert($nom, $sub_categoria) {
         $db = Db::getInstance();
         
@@ -84,7 +84,7 @@ class Categoria {
         
         $req->execute(array('nom' => $nom, 'sub_categoria' => $sub_categoria));
     }
-    
+    //Metoda per der update
     public static function modificar($id, $nom, $sub_categoria) {
         $db = Db::getInstance();
         
@@ -92,7 +92,7 @@ class Categoria {
 
         $req->execute(array('nom' => $nom, 'sub_categoria' => $sub_categoria, 'id' => $id));
     }
-    
+    //Metoda per fer delete
     public static function eliminar($id) {
         $db = Db::getInstance();
         // nos aseguramos que $id es un entero
@@ -102,9 +102,4 @@ class Categoria {
         $req->execute(array('id' => $id));
     }
 }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 

@@ -1,10 +1,12 @@
 <?php
 class PostsController {
     public function index() {
+        //Opcio que es fara quant no es demana cap ordre o filtratge
         if (!isset($_POST['obj']) && !isset($_POST['search'])){
             $posts = Post::all();
             require_once('views/posts/index.php');
         }
+        //En cas que es faci el ordre, trucara un metoda diferent per cada opcio per ordenar
         elseif (isset($_POST['obj'])) {
             switch ($_POST['obj']){
                 case 'author':
@@ -21,6 +23,7 @@ class PostsController {
                     break;
             }
         }
+        //Quant es fa un filtratge
         elseif (isset($_POST['search'])) {
             $posts = Post::search($_POST['search']);
             require_once('views/posts/index.php');
@@ -39,13 +42,13 @@ class PostsController {
         //$categoria = $post->id_categoria;
         require_once('views/posts/show.php');
     }
-
+    //Metoda que carrega el form per fer Inserts
     public function formCreate() {
         $cats = Categoria::all();
         
         require_once('views/posts/formInsert.php');
     }
-
+    //Metoda que crida al metoda de inserts del model post
     public function create() {
         if (!isset($_POST['author'])){
             return call('pages', 'error');
@@ -58,7 +61,7 @@ class PostsController {
 
         require_once('views/posts/formInsert.php');
     }
-    
+    //Metoda que carrega el formulari de modificar
     public function formUpdate() {
         if (!isset($_GET['id'])) {
             return call('pages', 'error');
@@ -69,7 +72,7 @@ class PostsController {
         
         require_once('views/posts/formUpdate.php');
     }
-    
+    //Metoda que crida al metoda update del post
     public function update() {
         if (!isset($_POST['author'])){
             return call('pages', 'error');
@@ -84,7 +87,7 @@ class PostsController {
         
         require_once('views/posts/index.php');
     }
-    
+    //Metoda que crida el metoda d'eliminar del post
     public function delete() {
         if (!isset($_GET['id'])) {
             return call('pages', 'error');

@@ -27,7 +27,7 @@ class CategoriaController {
             require_once('views/categoria/index.php');
         }
     }
-    
+    //Metoda que crida el meoda find del post
     public function show() {
         if (!isset($_GET['id'])) {
             return call('pages', 'error');
@@ -37,11 +37,11 @@ class CategoriaController {
         //$categoria = $post->id_categoria;
         require_once('views/categoria/show.php');
     }
-    
+    //Metoda per carregar el formulari de insert per categoria
     public function formCreate() {
         require_once('views/categoria/formInsert.php');
     }
-
+    //Metoda que executa el metoda de creacio de categoria
     public function create() {
         if (!isset($_POST['nom'])){
             return call('pages', 'error');
@@ -51,7 +51,7 @@ class CategoriaController {
 
         require_once('views/categoria/formInsert.php');
     }
-    
+    //Metoda que carrega el formulari de update per categoria
     public function formUpdate() {
         if (!isset($_GET['id'])) {
             return call('pages', 'error');
@@ -61,7 +61,7 @@ class CategoriaController {
         
         require_once('views/categoria/formUpdate.php');
     }
-    
+    //Metoda que executa el metoda update del model categoria
     public function update() {
         if (!isset($_POST['nom'])){
             return call('pages', 'error');
@@ -73,7 +73,7 @@ class CategoriaController {
         
         require_once('views/categoria/index.php');
     }
-    
+    //Metoda que executa el metoda eliminar del model categoria
     public function delete() {
         if (!isset($_GET['id'])) {
             return call('pages', 'error');
