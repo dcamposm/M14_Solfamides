@@ -1,8 +1,8 @@
-<form class="w3-container" action="<?php echo constant('URL');?>posts/create" method="post" enctype="multipart/form-data"> 
-    <p class="w3-xlarge">Author</p>
+<form action="<?php echo constant('URL');?>usuari/create" method="post" enctype="multipart/form-data"> 
+    <p>Author</p>
     <input type='text' name='author' class="w3-input w3-border" /> 
     
-    <p class="w3-xlarge">Titol</p>
+    <p>Titol</p>
     <input type='text' name='titol' class="w3-input w3-border" />        
     
     <p class="w3-xlarge">Post</p>
