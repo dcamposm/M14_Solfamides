@@ -19,7 +19,7 @@
         $action = $url[1];
     }else {
         $controller = 'pages';
-        $action = 'home';
+        $action = 'login';
     }
     
     require_once('views/layout.php');
