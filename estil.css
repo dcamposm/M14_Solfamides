@@ -1,6 +1,7 @@
 @import url("reset.css");
 body, .container {
     background-color: #242424;
+    font-family: Arial, Helvetica;
 }
 .container {
     line-height: 1;
@@ -8,25 +9,31 @@ body, .container {
     color: white;
 }
 .header {
-	background-color: black;
-	margin-bottom: 1em;
-	padding: 1em 1em;
-	border: 2px solid black;
-	border-radius: 50px;
+    background-color: black;
+    margin-bottom: 1em;
+    padding: 1em 1em;
+    border: 2px solid black;
+    border-radius: 0px 0px 1em 1em;
+    height: 1.5em;
 }
 .header .nav{
-	float: right;
-        clear: both;
-        height: 10em;
+    font-weight: bold;
+    color: white;
+    float: right;
+    clear: both;
 }
-
 .header .nav a {
-	background-color: gray;
-	padding: 1em 2.5em;
-	width: 10%;
-	border-radius: 50px 0px;
+    background-color: gray;
+    padding: 1em 2.5em;
+    width: 10%;
+    border-radius: 0px 0px 1em 1em;
 }
 .header .nav a:hover {
-	border-radius: 0px 50px;
-	background-color: cyan;
+    background-color: lightgray;
+}
+.header .nav a:active {
+    color: deeppink;
+}
+.main {
+    text-align: center;
 }

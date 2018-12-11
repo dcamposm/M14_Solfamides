@@ -15,9 +15,9 @@
                     </div>
                 </div>
             </header>
-            <main>
+            <div class="main">
                 <?php require_once('routes.php'); ?>
-            </main>
+            </div>
             <footer>
                 Copyright
             </footer>
