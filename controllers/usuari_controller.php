@@ -1,5 +1,5 @@
 <?php
-class CategoriaController {
+class UsuariController {
     public function index() {
         if (!isset($_POST['obj']) && !isset($_POST['search'])){
             // Guardamos todos los posts en una variable

@@ -5,15 +5,14 @@ function call($controller, $action) {
     case 'pages':
         $controller = new PagesController();
         break;
-    case 'posts':
+    case 'usuari':
         // necesitamos el modelo para después consultar a la BBDD
 // desde el controlador
-        require_once('models/post.php');
-        require_once('models/categoria.php');
-        $controller = new PostsController();
+        require_once('models/usuari.php');
+        $controller = new UsuariController();
         break;
-    case 'categoria':
-        require_once('models/categoria.php');
+    case 'personal':
+        require_once('models/personal.php');
         $controller = new CategoriaController();
         break;
     }
@@ -24,8 +23,8 @@ function call($controller, $action) {
 // consideramos estos valores "permitidos"
 // agregando una entrada para el nuevo controlador y sus acciones.
 $controllers = array( 'pages' => ['login', 'error'],
-                      'posts' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete'],
-                      'categoria' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete']);
+                      'usuari' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete'],
+                      'personal' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete']);
 // verifica que tanto el controlador como la acción solicitados estén permitidos
 // Si alguien intenta acceder a otro controlador y/o acción, será redirigido al método de error del controlador de pages.
 if (array_key_exists($controller, $controllers)) {
