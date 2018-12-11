@@ -1,3 +1,5 @@
+<!--PONER QUE SI $user ES FALSE QUE SALGA UN MENSAJE DE ERROR-->
+
 <form action="<?php echo constant('URL');?>usuari/create" method="post" enctype="multipart/form-data"> 
     <p>Author</p>
     <input type='text' name='author' class="w3-input w3-border" /> 

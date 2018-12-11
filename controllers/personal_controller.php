@@ -2,13 +2,12 @@
 class PersonalController {
     public function index() {
 
-        $posts = Post::all();
+        $pers = Personal::mostrarTots();
         require_once('views/posts/index.php');
     }
 
     //Metoda que carrega el form per fer Inserts
-    public function formCreate() {
-        $pers = Categoria::all();       
+    public function formCreate() {     
         require_once('views/personal/formInsert.php');
     }
     //Metoda que crida al metoda de inserts del model post
@@ -17,48 +16,41 @@ class PersonalController {
             return call('pages', 'error');
         }
 
-        $image=!empty($_FILES["image"]["author"])
-            ? sha1_file($_FILES['image']['tmp_author']) . "-" . basename($_FILES["image"]["author"]) : "";
+        Personal::alta($_POST['dni'], $_POST['nom'], $_POST['cog1'], $_POST['cog2'], $_POST['email'], $_POST['telefon'], $_POST['dire'], $_POST['naix'], $_POST['nss'], $_POST['iban']);
 
-        Post::insert($_POST['author'], $_POST['content'], $_POST['titol'], $image, $_POST['id_categoria']);
-
-        require_once('views/posts/formInsert.php');
+        require_once('views/personal/formInsert.php');
     }
     //Metoda que carrega el formulari de modificar
     public function formUpdate() {
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['dni'])) {
             return call('pages', 'error');
         }
         // utilizamos el id para obtener el post correspondiente
-        $post = Post::find($_GET['id']);
-        $cats = Categoria::all();
+        $per = Personal::buscar($_GET['dni']);
         
-        require_once('views/posts/formUpdate.php');
+        require_once('views/personal/formUpdate.php');
     }
     //Metoda que crida al metoda update del post
     public function update() {
-        if (!isset($_POST['author'])){
+        if (!isset($_GET['dni'])){
             return call('pages', 'error');
         }
 
-        $image=!empty($_FILES["image"]["author"])
-            ? sha1_file($_FILES['image']['tmp_author']) . "-" . basename($_FILES["image"]["author"]) : "";
+        Personal::modificar($_GET['dni'], $_POST['nom'], $_POST['cog1'], $_POST['cog2'], $_POST['email'], $_POST['telefon'], $_POST['dire'], $_POST['naix'], $_POST['nss'], $_POST['iban']);
         
-        Post::modificar($_GET['id'], $_POST['author'], $_POST['content'], $_POST['titol'], $image, $_POST['id_categoria']);
+        $pers = Personal::mostrarTots();
         
-        $posts = Post::all();
-        
-        require_once('views/posts/index.php');
+        require_once('views/personal/index.php');
     }
     //Metoda que crida el metoda d'eliminar del post
     public function delete() {
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['dni'])) {
             return call('pages', 'error');
         }
        
-        Post::eliminar($_GET['id']);
-        $posts = Post::all();
-        require_once('views/posts/index.php');
+        Personal::eliminar($_GET['dni']);
+        $pers = Personal::mostrarTots();
+        require_once('views/personal/index.php');
     }
 }
 ?>
