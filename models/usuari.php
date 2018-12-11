@@ -1,30 +1,34 @@
 <?php
 class Usuari {
-    // definimos tres atributos
-    // los declaramos como públicos para acceder directamente $post->author
-    public $id;
-    public $nomUsuari;
-    public $nom;
-    public $cognom;
-    public $email;
-    public $telefon;
+    public $alias_usuari;
+    public $nom_usuari;
+    public $primer_cognom_usuari;
+    public $segon_cognom_usuari;
+    public $email_usuari;
+    public $telefon_usuari;
+    public $contrasenya_usuari;
+    public $id_rol;
 
-    public function __construct($id, $author, $content, $titol, $image, $id_categoria) {
-        $this->id = $id;
-        $this->author = $author;
-        $this->content = $content;
-        $this->titol = $titol;
-        $this->image = $image;
-        $this->id_categoria = $id_categoria;
+    public function __construct($alias_usuari, $nom_usuari, $primer_cognom_usuari, $segon_cognom_usuari, 
+                                    $email_usuari, $telefon_usuari, $contrasenya_usuari, $id_rol) {
+        
+        $this->alias_usuari = $alias_usuari;
+        $this->nom_usuari = $nom_usuari;
+        $this->primer_cognom_usuari = $primer_cognom_usuari;
+        $this->segon_cognom_usuari = $segon_cognom_usuari;
+        $this->email_usuari = $email_usuari;
+        $this->telefon_usuari = $telefon_usuari;
+        $this->contrasenya_usuari = $contrasenya_usuari;
+        $this->id_rol = $id_rol;
     }
-    //Metoda per fer select en tota la taula
-    public static function all() {
+    
+    public static function mostrarTots() {
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM posts ORDER BY id');
-        // creamos una lista de objectos post y recorremos la respuesta de la consulta
-        foreach($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['author'], $post['content'], $post['titol'], $post['image'], $post['id_categoria']);
+        
+        foreach($req->fetchAll() as $user) {
+            $list[] = new Usuari($user['alias_usuari'], $user['nom_usuari'], $user['primer_cognom_usuari'], $user['segon_cognom_usuari'], $user['email_usuari'], $user['telefon_usuari'], $user['contrasenya_usuari'], $user['id_rol']);
         }
         return $list;
     }
