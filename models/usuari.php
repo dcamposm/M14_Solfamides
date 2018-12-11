@@ -55,24 +55,36 @@ class Usuari {
             return false;
         }
     }
-    //Metoda per fer update
-    public static function modificar($id, $author, $content, $titol, $image, $id_categoria) {
+    //Metode per modificar
+    public static function modificar($alias_usuari, $nom_usuari, $primer_cognom_usuari, $segon_cognom_usuari, 
+                                    $email_usuari, $telefon_usuari, $contrasenya_usuari, $id_rol) {
         $db = Db::getInstance();
         
-        $req = $db->prepare('UPDATE posts SET author = :author, content = :content, titol = :titol, image = :image, id_categoria = :id_categoria WHERE id = :id');
+        $req = $db->prepare('UPDATE usuari SET alias_usuari = :alias_usuari, nom_usuari = :nom_usuari, primer_cognom_usuari = :primer_cognom_usuari, segon_cognom_usuari = :segon_cognom_usuari, email_usuari = :email_usuari, telefon_usuari = :telefon_usuari, contrasenya_usuari = :contrasenya_usuari, id_rol = :id_rol WHERE alias_usuari = :alias_usuari');
 
-        $req->execute(array('id' => $id,'author' => $author, 'content' => $content, 'titol' => $titol, 'image' => $image, 'id_categoria' => $id_categoria));
+        if ($req->execute(array('alias_usuari' => $alias_usuari, 'nom_usuari' => $nom_usuari, 'primer_cognom_usuari' => $primer_cognom_usuari, 'segon_cognom_usuari' => $segon_cognom_usuari, 'email_usuari' => $email_usuari, 'telefon_usuari' => $telefon_usuari, 'contrasenya_usuari' => $contrasenya_usuari, 'id_rol' => $id_rol))) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    //Metoda per fer delete
-    public static function eliminar($id) {
+    //Metode per eliminar
+    public static function eliminar($alias_usuari) {
         $db = Db::getInstance();
-        // nos aseguramos que $id es un entero
-        $id = intval($id);
-        $req = $db->prepare('DELETE FROM posts WHERE id = :id');
-        // preparamos la sentencia y reemplazamos :id con el valor de $id
-        $req->execute(array('id' => $id));
+        
+        $req = $db->prepare('DELETE FROM usuari WHERE alias_usuari = :alias_usuari');
+        
+        $req->execute(array('alias_usuari' => $alias_usuari));
     }
     
+    //Metode per fer login
     
+    public static function login($alias_usuari, $contrasenya_usuari) {
+        $db = Db::getInstance();
+        $alias = $db->query('SELECT alias_usuari FROM usuari');
+        $pas = $db->query('SELECT contasenya_usuari FROM usuari ORDER BY alias_usuari');
+        
+        
+    }
 }
 ?>
