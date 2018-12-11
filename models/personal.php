@@ -66,27 +66,27 @@ class Personal {
     }
     
     //Metodes per modificar
-    public static function modificar() {
-        $list = [];
-        $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM categoria ORDER BY sub_categoria ASC');
+    public static function modificar($dni_personalExtern, $nom_personalExtern, $primer_cognom_personalExtern, $segon_cognom_personalExtern, $email_personalExtern, $telefon_personalExtern,
+                                 $direccio_personalExtern, $naixement_personalExtern, $nss_personalExtern, $iban_personalExtern, $id_idioma) {
         
-        foreach($req->fetchAll() as $cat) {
-            $list[] = new Categoria($cat['id'], $cat['nom'], $cat['sub_categoria'], $cat['creacio']);
+        $db = Db::getInstance();
+        
+        $req = $db->prepare('UPDATE personalextern SET nom_personalExtern = :nom_personalExtern, primer_cognom_personalExtern = :primer_cognom_personalExtern, segon_cognom_personalExtern = :segon_cognom_personalExtern, email_personalExtern = :email_personalExtern, telefon_personalExtern = :telefon_personalExtern, direccio_personalExtern = :direccio_personalExtern, nss_personalExtern = :nss_personalExtern, iban_personalExtern = :iban_personalExtern, id_idioma = :id_idioma WHERE dni_personalExtern = :dni_personalExtern');
+
+        if ($req->execute(array('dni_personalExtern' => $dni_personalExtern, 'nom_personalExtern' => $nom_personalExtern, 'primer_cognom_personalExtern' => $primer_cognom_personalExtern, 'segon_cognom_personalExtern' => $segon_cognom_personalExtern, 'email_personalExtern' => $email_personalExtern, 'telefon_personalExtern' => $telefon_personalExtern, 'direccio_personalExtern' => $direccio_personalExtern, 'nss_personalExtern' => $nss_personalExtern, 'iban_personalExtern' => $iban_personalExtern, 'id_idioma' => $id_idioma))) {
+            return true;
+        } else {
+            return false;
         }
-        return $list;
     }
     
     //Eliminar
-    public static function eliminar() {
-        $list = [];
+    public static function eliminar($dni_personalExtern) {
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM categoria ORDER BY creacio ASC');
         
-        foreach($req->fetchAll() as $cat) {
-            $list[] = new Categoria($cat['id'], $cat['nom'], $cat['sub_categoria'], $cat['creacio']);
-        }
-        return $list;
+        $req = $db->prepare('DELETE FROM personalextern WHERE dni_personalExtern = :dni_personalExtern');
+        
+        $req->execute(array('dni_personalExtern' => $dni_personalExtern));
     }
 
 }
