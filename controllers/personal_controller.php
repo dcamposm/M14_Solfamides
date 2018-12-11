@@ -1,5 +1,5 @@
 <?php
-class PostsController {
+class PersonalController {
     public function index() {
         //Opcio que es fara quant no es demana cap ordre o filtratge
         if (!isset($_POST['obj']) && !isset($_POST['search'])){

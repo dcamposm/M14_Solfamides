@@ -1,13 +1,13 @@
 <?php
-class Post {
+class Usuari {
     // definimos tres atributos
     // los declaramos como públicos para acceder directamente $post->author
     public $id;
-    public $author;
-    public $content;
-    public $titol;
-    public $image;
-    public $id_categoria;
+    public $nomUsuari;
+    public $nom;
+    public $cognom;
+    public $email;
+    public $telefon;
 
     public function __construct($id, $author, $content, $titol, $image, $id_categoria) {
         $this->id = $id;
