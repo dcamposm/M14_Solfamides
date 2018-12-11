@@ -36,7 +36,7 @@ class Usuari {
     public static function buscar($alias_usuari) {
         $db = Db::getInstance();
         
-        $req = $db->prepare('SELECT * FROM usuaris WHERE alias_usuari =:alias_usuari');
+        $req = $db->prepare('SELECT * FROM usuari WHERE alias_usuari =:alias_usuari');
         
         $req->execute(array('alias_usuari' => $alias_usuari));
         $user = $req->fetch();
@@ -47,9 +47,13 @@ class Usuari {
                                     $email_usuari, $telefon_usuari, $contrasenya_usuari, $id_rol) {
         $db = Db::getInstance();
         
-        $req = $db->prepare('INSERT INTO usuaris SET alias_usuari = :alias_usuari, nom_usuari = :nom_usuari, primer_cognom_usuari = :primer_cognom_usuari, segon_cognom_usuari = :segon_cognom_usuari, email_usuari = :email_usuari, telefon_usuari = :telefon_usuari, contrasenya_usuari = :contrasenya_usuari, id_rol = :id_rol');
+        $req = $db->prepare('INSERT INTO usuari SET alias_usuari = :alias_usuari, nom_usuari = :nom_usuari, primer_cognom_usuari = :primer_cognom_usuari, segon_cognom_usuari = :segon_cognom_usuari, email_usuari = :email_usuari, telefon_usuari = :telefon_usuari, contrasenya_usuari = :contrasenya_usuari, id_rol = :id_rol');
 
-        $req->execute(array('alias_usuari' => $alias_usuari, 'nom_usuari' => $nom_usuari, 'primer_cognom_usuari' => $primer_cognom_usuari, 'segon_cognom_usuari' => $segon_cognom_usuari, 'email_usuari' => $email_usuari, 'telefon_usuari' => $telefon_usuari, 'contrasenya_usuari' => $contrasenya_usuari, 'id_rol' => $id_rol));
+        if ($req->execute(array('alias_usuari' => $alias_usuari, 'nom_usuari' => $nom_usuari, 'primer_cognom_usuari' => $primer_cognom_usuari, 'segon_cognom_usuari' => $segon_cognom_usuari, 'email_usuari' => $email_usuari, 'telefon_usuari' => $telefon_usuari, 'contrasenya_usuari' => $contrasenya_usuari, 'id_rol' => $id_rol))) {
+            return true;
+        } else {
+            return false;
+        }
     }
     //Metoda per fer update
     public static function modificar($id, $author, $content, $titol, $image, $id_categoria) {
