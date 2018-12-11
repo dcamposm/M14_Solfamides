@@ -29,7 +29,7 @@ class UsuariController {
             return call('pages', 'error');
         }
         
-        $user = Usuari::alta($_POST['alias'],$_POST['nom'],$_POST['cog1'],$_POST['scog2'],$_POST['email'],$_POST['tel'],$_POST['pass'],$_POST['id_rol']);
+        $user = Usuari::alta($_POST['alias'],$_POST['nom'],$_POST['cog1'],$_POST['cog2'],$_POST['email'],$_POST['tel'],$_POST['pass']);
         
         require_once('views/usuari/formInsert.php');
     }
