@@ -3,7 +3,7 @@ class PersonalController {
     public function index() {
 
         $pers = Personal::mostrarTots();
-        require_once('views/posts/index.php');
+        require_once('views/personal/index.php');
     }
 
     //Metoda que carrega el form per fer Inserts
