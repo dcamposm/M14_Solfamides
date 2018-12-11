@@ -23,7 +23,7 @@ function call($controller, $action) {
 // consideramos estos valores "permitidos"
 // agregando una entrada para el nuevo controlador y sus acciones.
 $controllers = array( 'pages' => ['login', 'error'],
-                      'usuari' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete'],
+                      'usuari' => ['index', 'login', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete'],
                       'personal' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete']);
 // verifica que tanto el controlador como la acción solicitados estén permitidos
 // Si alguien intenta acceder a otro controlador y/o acción, será redirigido al método de error del controlador de pages.

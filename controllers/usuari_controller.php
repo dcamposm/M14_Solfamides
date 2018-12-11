@@ -2,19 +2,23 @@
 class UsuariController {
     public function index() {
 
-        $users = Usuari::all();
+        $users = Usuari::mostrarTots();
         require_once('views/usuari/index.php');
     }
-    //Metoda que crida el meoda find del post
-    public function show() {
-        if (!isset($_GET['id'])) {
-            return call('pages', 'error');
+    
+    public function login() {
+        
+        $ver = Usuari::login($_POST['user'],$_POST['pass']);
+        
+        if ($ver === true){
+            $users = Usuari::mostrarTots();
+            require_once('views/usuari/index.php');
         }
-
-        $user = Usuari::find($_GET['id']);
-        //$categoria = $post->id_categoria;
-        require_once('views/usuari/show.php');
+        else {
+            require_once('views/pages/login.php');
+        }
     }
+    
     //Metoda per carregar el formulari de insert per categoria
     public function formCreate() {
         require_once('views/usuari/formInsert.php');
@@ -47,7 +51,7 @@ class UsuariController {
 
         Usuari::modificar();
         
-        $users = Usuari::all();
+        $users = Usuari::mostrarTots();
         
         require_once('views/usuari/index.php');
     }
@@ -58,7 +62,7 @@ class UsuariController {
         }
        
         Usuari::eliminar($_GET['id']);
-        $users = Usuari::all();
+        $users = Usuari::mostrarTots();
         require_once('views/usuari/index.php');
     }
 }
