@@ -39,7 +39,7 @@ class UsuariController {
             return call('pages', 'error');
         }
         // utilizamos el id para obtener el post correspondiente
-        $user = Usuari::find($_GET['id']);
+        $user = Usuari::buscar($_GET['id']);
         
         require_once('views/usuari/formUpdate.php');
     }
