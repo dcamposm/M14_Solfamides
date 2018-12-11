@@ -53,7 +53,8 @@ class Personal {
     
     
     //Metodes per donar d'alta
-    public static function alta() {
+    public static function alta($dni_personalExtern, $nom_personalExtern, $primer_cognom_personalExtern, $segon_cognom_personalExtern, $email_personalExtern, $telefon_personalExtern,
+                                 $direccio_personalExtern, $naixement_personalExtern, $nss_personalExtern, $iban_personalExtern, $id_idioma) {
          $db = Db::getInstance();
         
         $req = $db->prepare('INSERT INTO personalextern SET dni_personalExtern = :dni_personalExtern, nom_personalExtern = :nom_personalExtern, primer_cognom_personalExtern = :primer_cognom_personalExtern, segon_cognom_personalExtern = :segon_cognom_personalExtern, email_personalExtern = :email_personalExtern, telefon_personalExtern = :telefon_personalExtern, direccio_personalExtern = :direccio_personalExtern, nss_personalExtern = :nss_personalExtern, iban_personalExtern = :iban_personalExtern, id_idioma = :id_idioma');
