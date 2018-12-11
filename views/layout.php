@@ -2,7 +2,7 @@
 <html>
     <head>
     </head>
-    <link rel="stylesheet" type="text/css" href="http://localhost/blog_php_mvc/estil.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost/m14_proyecto/estil.css" />
     <body>
         <header>
             <a href='<?php echo constant('URL');?>'>Perfil</a>
