@@ -13,7 +13,7 @@ function call($controller, $action) {
         break;
     case 'personal':
         require_once('models/personal.php');
-        $controller = new CategoriaController();
+        $controller = new PersonalController();
         break;
     }
     // llama al método guardado en $action

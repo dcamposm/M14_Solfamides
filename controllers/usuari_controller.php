@@ -1,31 +1,9 @@
 <?php
 class UsuariController {
     public function index() {
-        if (!isset($_POST['obj']) && !isset($_POST['search'])){
-            // Guardamos todos los posts en una variable
-            $cats = Categoria::all();
-            require_once('views/categoria/index.php');
-        }
-        elseif (isset($_POST['obj'])) {
-            switch ($_POST['obj']){
-                case 'nombre':
-                    $cats = Categoria::ordByName();
-                    require_once('views/categoria/index.php');
-                    break;
-                case 'sub_categoria':
-                    $cats = Categoria::ordBySub();
-                    require_once('views/categoria/index.php');
-                    break;
-                case 'creacio':
-                    $cats = Categoria::ordByDate();
-                    require_once('views/categoria/index.php');
-                    break;
-            }
-        }
-        elseif (isset($_POST['search'])) {
-            $cats = Categoria::search($_POST['search']);
-            require_once('views/categoria/index.php');
-        }
+
+        $users = Usuari::all();
+        require_once('views/usuari/index.php');
     }
     //Metoda que crida el meoda find del post
     public function show() {
@@ -33,13 +11,13 @@ class UsuariController {
             return call('pages', 'error');
         }
 
-        $cat = Categoria::find($_GET['id']);
+        $user = Usuari::find($_GET['id']);
         //$categoria = $post->id_categoria;
-        require_once('views/categoria/show.php');
+        require_once('views/usuari/show.php');
     }
     //Metoda per carregar el formulari de insert per categoria
     public function formCreate() {
-        require_once('views/categoria/formInsert.php');
+        require_once('views/usuari/formInsert.php');
     }
     //Metoda que executa el metoda de creacio de categoria
     public function create() {
@@ -47,9 +25,9 @@ class UsuariController {
             return call('pages', 'error');
         }
         
-        Categoria::insert($_POST['nom'], $_POST['sub_categoria']);
+        Usuari::insert();
 
-        require_once('views/categoria/formInsert.php');
+        require_once('views/usuari/formInsert.php');
     }
     //Metoda que carrega el formulari de update per categoria
     public function formUpdate() {
@@ -57,9 +35,9 @@ class UsuariController {
             return call('pages', 'error');
         }
         // utilizamos el id para obtener el post correspondiente
-        $cat = Categoria::find($_GET['id']);
+        $user = Usuari::find($_GET['id']);
         
-        require_once('views/categoria/formUpdate.php');
+        require_once('views/usuari/formUpdate.php');
     }
     //Metoda que executa el metoda update del model categoria
     public function update() {
@@ -67,11 +45,11 @@ class UsuariController {
             return call('pages', 'error');
         }
 
-        Categoria::modificar($_GET['id'], $_POST['nom'], $_POST['sub_categoria']);
+        Usuari::modificar();
         
-        $cats = Categoria::all();
+        $users = Usuari::all();
         
-        require_once('views/categoria/index.php');
+        require_once('views/usuari/index.php');
     }
     //Metoda que executa el metoda eliminar del model categoria
     public function delete() {
@@ -79,8 +57,8 @@ class UsuariController {
             return call('pages', 'error');
         }
        
-        Categoria::eliminar($_GET['id']);
-        $cats = Categoria::all();
-        require_once('views/categoria/index.php');
+        Usuari::eliminar($_GET['id']);
+        $users = Usuari::all();
+        require_once('views/usuari/index.php');
     }
 }
