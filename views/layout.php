@@ -11,13 +11,13 @@
                     <div class="nav">
                         <a href='<?php echo constant('URL');?>'>Perfil</a>
                         <a href='<?php echo constant('URL');?>usuari/index'>Usuaris</a>
-                        <a href='<?php echo constant('URL');?>personal/index'>Perosonal</a>
+                        <a href='<?php echo constant('URL');?>personal/index'>Personal</a>
                     </div>
                 </div>
             </header>
-            <main>
+            <div class="main">
                 <?php require_once('routes.php'); ?>
-            </main>
+            </div>
             <footer>
                 Copyright
             </footer>
