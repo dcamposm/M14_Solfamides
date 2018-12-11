@@ -1,3 +1,5 @@
+<!--PONER QUE SI $user ES FALSE QUE SALGA UN MENSAJE DE ERROR-->
+
 <h2>Modificar Post #<?php echo $post->id; ?></h2>
 <form class="w3-container" action="<?php echo constant('URL');?>posts/update&id=<?php echo $post->id; ?>" method="post" enctype="multipart/form-data"> 
     <p class="w3-xlarge">Author</p>
