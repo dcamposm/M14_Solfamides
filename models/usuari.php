@@ -82,14 +82,19 @@ class Usuari {
     public static function login($alias_usuari, $contrasenya_usuari) {
         $db = Db::getInstance();
         
-        $req = $db->prepare('SELECT alias_usuari, contrasenya_usuari FROM usuari WHERE alias_usuari = :alias_usuari AND contrasenya_usuari = :contrasenya_usuari');
+        $req = $db->query('SELECT alias_usuari, contrasenya_usuari FROM usuari WHERE alias_usuari = :'.$alias_usuari.' AND contrasenya_usuari = :'.$contrasenya_usuari);
         
-        if ($req->execute(array('alias_usuari' => $alias_usuari, 'contrasenya_usuari' => $contrasenya_usuari))) {
-            return true;
-        } else {
-            return false;
+        $count = 0;
+        
+        foreach($req->fetchAll() as $user) {
+            $count++;
         }
-        
+        if ($count == 1) {
+            return 1;
+        } else {
+            return 0;
+        }
+ 
     }
 }
 ?>
