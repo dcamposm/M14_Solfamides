@@ -1,5 +1,5 @@
 <?php
-    define('URL','http://localhost/blog_php_mvc/');
+    define('URL','http://localhost/m14_proyecto/');
     require_once('connection.php');
 
     /*if (isset($_GET['controller']) && isset($_GET['action'])) {
