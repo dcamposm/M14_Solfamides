@@ -25,11 +25,11 @@ class UsuariController {
     }
     //Metoda que executa el metoda de creacio de categoria
     public function create() {
-        if (!isset($_POST['nom'])){
+        if (!isset($_POST['alias'])){
             return call('pages', 'error');
         }
         
-        Usuari::insert();
+        Usuari::alta($_POST['alias'],$_POST['nom'],$_POST['cog1'],$_POST['scog2'],$_POST['email'],$_POST['tel'],$_POST['pass'],$_POST['id_rol']);
 
         require_once('views/usuari/formInsert.php');
     }
