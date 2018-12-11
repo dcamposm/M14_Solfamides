@@ -13,7 +13,7 @@ function call($controller, $action) {
         break;
     case 'personal':
         require_once('models/personal.php');
-        $controller = new CategoriaController();
+        $controller = new PersonalController();
         break;
     }
     // llama al método guardado en $action
@@ -23,7 +23,7 @@ function call($controller, $action) {
 // consideramos estos valores "permitidos"
 // agregando una entrada para el nuevo controlador y sus acciones.
 $controllers = array( 'pages' => ['login', 'error'],
-                      'usuari' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete'],
+                      'usuari' => ['index', 'login', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete'],
                       'personal' => ['index', 'show', 'formCreate', 'create', 'formUpdate', 'update', 'delete']);
 // verifica que tanto el controlador como la acción solicitados estén permitidos
 // Si alguien intenta acceder a otro controlador y/o acción, será redirigido al método de error del controlador de pages.

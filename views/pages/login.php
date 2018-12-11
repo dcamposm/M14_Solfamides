@@ -1,5 +1,5 @@
 <p>LOGIN<p>
-<form action="<?php echo constant('URL');?>posts/create" method="post" enctype="multipart/form-data"> 
+<form action="<?php echo constant('URL');?>usuari/login" method="post" enctype="multipart/form-data"> 
     <p>Username<p>
     <input type='text' name='user'/> 
     <p>Password<p>
