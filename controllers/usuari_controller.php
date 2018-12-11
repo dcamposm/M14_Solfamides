@@ -29,27 +29,27 @@ class UsuariController {
             return call('pages', 'error');
         }
         
-        Usuari::alta($_POST['alias'],$_POST['nom'],$_POST['cog1'],$_POST['scog2'],$_POST['email'],$_POST['tel'],$_POST['pass'],$_POST['id_rol']);
-
+        $user = Usuari::alta($_POST['alias'],$_POST['nom'],$_POST['cog1'],$_POST['scog2'],$_POST['email'],$_POST['tel'],$_POST['pass'],$_POST['id_rol']);
+        
         require_once('views/usuari/formInsert.php');
     }
     //Metoda que carrega el formulari de update per categoria
     public function formUpdate() {
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['alias'])) {
             return call('pages', 'error');
         }
         // utilizamos el id para obtener el post correspondiente
-        $user = Usuari::buscar($_GET['id']);
+        $user = Usuari::buscar($_GET['alias']);
         
         require_once('views/usuari/formUpdate.php');
     }
     //Metoda que executa el metoda update del model categoria
     public function update() {
-        if (!isset($_POST['nom'])){
+        if (!isset($_POST['alias'])){
             return call('pages', 'error');
         }
 
-        Usuari::modificar();
+        Usuari::modificar($_GET['alias'],$_POST['nom'],$_POST['cog1'],$_POST['scog2'],$_POST['email'],$_POST['tel'],$_POST['pass'],$_POST['id_rol']);
         
         $users = Usuari::mostrarTots();
         
@@ -57,11 +57,11 @@ class UsuariController {
     }
     //Metoda que executa el metoda eliminar del model categoria
     public function delete() {
-        if (!isset($_GET['id'])) {
+        if (!isset($_GET['alias'])) {
             return call('pages', 'error');
         }
        
-        Usuari::eliminar($_GET['id']);
+        Usuari::eliminar($_GET['alias']);
         $users = Usuari::mostrarTots();
         require_once('views/usuari/index.php');
     }
