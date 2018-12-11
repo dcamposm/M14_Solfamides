@@ -44,12 +44,12 @@ class Usuari {
     }
     //Metode per donar d'alta
     public static function alta($alias_usuari, $nom_usuari, $primer_cognom_usuari, $segon_cognom_usuari, 
-                                    $email_usuari, $telefon_usuari, $contrasenya_usuari, $id_rol) {
+                                    $email_usuari, $telefon_usuari, $contrasenya_usuari) {
         $db = Db::getInstance();
         
-        $req = $db->prepare('INSERT INTO usuari SET alias_usuari = :alias_usuari, nom_usuari = :nom_usuari, primer_cognom_usuari = :primer_cognom_usuari, segon_cognom_usuari = :segon_cognom_usuari, email_usuari = :email_usuari, telefon_usuari = :telefon_usuari, contrasenya_usuari = :contrasenya_usuari, id_rol = :id_rol');
+        $req = $db->prepare('INSERT INTO usuari SET alias_usuari = :alias_usuari, nom_usuari = :nom_usuari, primer_cognom_usuari = :primer_cognom_usuari, segon_cognom_usuari = :segon_cognom_usuari, email_usuari = :email_usuari, telefon_usuari = :telefon_usuari, contrasenya_usuari = :contrasenya_usuari');
 
-        if ($req->execute(array('alias_usuari' => $alias_usuari, 'nom_usuari' => $nom_usuari, 'primer_cognom_usuari' => $primer_cognom_usuari, 'segon_cognom_usuari' => $segon_cognom_usuari, 'email_usuari' => $email_usuari, 'telefon_usuari' => $telefon_usuari, 'contrasenya_usuari' => $contrasenya_usuari, 'id_rol' => $id_rol))) {
+        if ($req->execute(array('alias_usuari' => $alias_usuari, 'nom_usuari' => $nom_usuari, 'primer_cognom_usuari' => $primer_cognom_usuari, 'segon_cognom_usuari' => $segon_cognom_usuari, 'email_usuari' => $email_usuari, 'telefon_usuari' => $telefon_usuari, 'contrasenya_usuari' => $contrasenya_usuari))) {
             return true;
         } else {
             return false;
@@ -57,12 +57,12 @@ class Usuari {
     }
     //Metode per modificar
     public static function modificar($alias_usuari, $nom_usuari, $primer_cognom_usuari, $segon_cognom_usuari, 
-                                    $email_usuari, $telefon_usuari, $contrasenya_usuari, $id_rol) {
+                                    $email_usuari, $telefon_usuari, $contrasenya_usuari) {
         $db = Db::getInstance();
         
-        $req = $db->prepare('UPDATE usuari SET alias_usuari = :alias_usuari, nom_usuari = :nom_usuari, primer_cognom_usuari = :primer_cognom_usuari, segon_cognom_usuari = :segon_cognom_usuari, email_usuari = :email_usuari, telefon_usuari = :telefon_usuari, contrasenya_usuari = :contrasenya_usuari, id_rol = :id_rol WHERE alias_usuari = :alias_usuari');
+        $req = $db->prepare('UPDATE usuari SET alias_usuari = :alias_usuari, nom_usuari = :nom_usuari, primer_cognom_usuari = :primer_cognom_usuari, segon_cognom_usuari = :segon_cognom_usuari, email_usuari = :email_usuari, telefon_usuari = :telefon_usuari, contrasenya_usuari = :contrasenya_usuari WHERE alias_usuari = :alias_usuari');
 
-        if ($req->execute(array('alias_usuari' => $alias_usuari, 'nom_usuari' => $nom_usuari, 'primer_cognom_usuari' => $primer_cognom_usuari, 'segon_cognom_usuari' => $segon_cognom_usuari, 'email_usuari' => $email_usuari, 'telefon_usuari' => $telefon_usuari, 'contrasenya_usuari' => $contrasenya_usuari, 'id_rol' => $id_rol))) {
+        if ($req->execute(array('alias_usuari' => $alias_usuari, 'nom_usuari' => $nom_usuari, 'primer_cognom_usuari' => $primer_cognom_usuari, 'segon_cognom_usuari' => $segon_cognom_usuari, 'email_usuari' => $email_usuari, 'telefon_usuari' => $telefon_usuari, 'contrasenya_usuari' => $contrasenya_usuari))) {
             return true;
         } else {
             return false;
@@ -81,9 +81,14 @@ class Usuari {
     
     public static function login($alias_usuari, $contrasenya_usuari) {
         $db = Db::getInstance();
-        $alias = $db->query('SELECT alias_usuari FROM usuari');
-        $pas = $db->query('SELECT contasenya_usuari FROM usuari ORDER BY alias_usuari');
         
+        $req = $db->prepare('SELECT alias_usuari, contrasenya_usuari FROM usuari WHERE alias_usuari = :alias_usuari AND contrasenya_usuari = :contrasenya_usuari');
+        
+        if ($req->execute(array('alias_usuari' => $alias_usuari, 'contrasenya_usuari' => $contrasenya_usuari))) {
+            return true;
+        } else {
+            return false;
+        }
         
     }
 }
