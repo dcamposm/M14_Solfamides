@@ -82,7 +82,7 @@ class Usuari {
     public static function login($alias_usuari, $contrasenya_usuari) {
         $db = Db::getInstance();
         
-        $req = $db->query('SELECT alias_usuari, contrasenya_usuari FROM usuari WHERE alias_usuari = :'.$alias_usuari.' AND contrasenya_usuari = :'.$contrasenya_usuari);
+        $req = $db->query('SELECT alias_usuari, contrasenya_usuari FROM usuari WHERE alias_usuari LIKE "'.$alias_usuari.'" AND contrasenya_usuari LIKE "'.$contrasenya_usuari.'"');
         
         $count = 0;
         

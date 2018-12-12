@@ -9,8 +9,8 @@ class UsuariController {
     public function login() {
         
         $ver = Usuari::login($_POST['user'],$_POST['pass']);
-        
-        if ($ver === true){
+
+        if ($ver == true){
             $users = Usuari::mostrarTots();
             require_once('views/usuari/index.php');
         }
