@@ -11,10 +11,10 @@ class Personal {
     public $naixement_personalExtern;
     public $nss_personalExtern;
     public $iban_personalExtern;
-    public $id_idioma;
+    //public $id_idioma;
 
     public function __construct($dni_personalExtern, $nom_personalExtern, $primer_cognom_personalExtern, $segon_cognom_personalExtern, $email_personalExtern, $telefon_personalExtern,
-                                 $direccio_personalExtern, $naixement_personalExtern, $nss_personalExtern, $iban_personalExtern, $id_idioma) {
+                                 $direccio_personalExtern, $naixement_personalExtern, $nss_personalExtern, $iban_personalExtern) {
         
         $this->dni_personalExtern = $dni_personalExtern;
         $this->nom_personalExtern = $nom_personalExtern;
@@ -26,7 +26,7 @@ class Personal {
         $this->naixement_personalExtern = $naixement_personalExtern;
         $this->nss_personalExtern = $nss_personalExtern;
         $this->iban_personalExtern = $iban_personalExtern;
-        $this->id_idioma = $id_idioma;
+        //$this->id_idioma = $id_idioma;
     }
     //Metoda per mostrar totes les insertccions de la taula categoria
     public static function mostrarTots() {
@@ -35,7 +35,7 @@ class Personal {
         $req = $db->query('SELECT * FROM personalextern ORDER BY dni_personalExtern');
         
         foreach($req->fetchAll() as $personal) {
-            $list[] = new Personal($personal['dni_personalExtern'], $personal['nom_personalExtern'], $personal['primer_cognom_personalExtern'], $personal['segon_cognom_personalExtern'], $personal['email_personalExtern'], $personal['telefon_personalExtern'],$personal['direccio_personalExtern'], $personal['naixement_personalExtern'], $personal['nss_personalExtern'], $personal['iban_personalExtern'], $personal['id_idioma']);
+            $list[] = new Personal($personal['dni_personalExtern'], $personal['nom_personalExtern'], $personal['primer_cognom_personalExtern'], $personal['segon_cognom_personalExtern'], $personal['email_personalExtern'], $personal['telefon_personalExtern'],$personal['direccio_personalExtern'], $personal['naixement_personalExtern'], $personal['nss_personalExtern'], $personal['iban_personalExtern']);
         }
         return $list;
     }
