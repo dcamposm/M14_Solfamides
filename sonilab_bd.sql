@@ -214,3 +214,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+INSERT INTO `usuari` (`alias_usuari`, `nom_usuari`, `primer_cognom_usuari`, `segon_cognom_usuari`, `email_usuari`, `telefon_usuari`, `contrasenya_usuari`, `id_rol`) VALUES ('prov1', 'prov', 'proco1', 'proco2', 'pro@pro.pro', '123456789', 'provo', NULL)

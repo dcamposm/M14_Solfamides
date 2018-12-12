@@ -1,10 +1,10 @@
-<form class="w3-container" action="<?php echo constant('URL');?>categoria/create" method="post" enctype="multipart/form-data"> 
+<form class="w3-container" action="<?php echo constant('URL');?>pesonal/create" method="post" enctype="multipart/form-data"> 
     <p class="w3-xlarge">Nom</p>
     <input type='text' name='nom' class="w3-input w3-border" />
 
     <p class="w3-xlarge">Sub-categoria</p>
 
-    <select class="w3-select w3-border" name='sub_categoria'>
+    <select name='sub_categoria'>
         <option>Selecciona...</option>
         <option value='Ninguno'>Ninguno</option>
         <option value='Sistemas'>Sistemas</option>

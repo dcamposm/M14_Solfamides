@@ -11,6 +11,9 @@ a:active {
 input {
     border-radius: 1em;
 }
+hr {
+    color: white;
+}
 h1 {
     float: left;
     clear: both;
