@@ -26,7 +26,7 @@ class Personal {
         $this->naixement_personalExtern = $naixement_personalExtern;
         $this->nss_personalExtern = $nss_personalExtern;
         $this->iban_personalExtern = $iban_personalExtern;
-        //$this->id_idioma = $id_idioma;
+        $this->id_idioma = $id_idioma;
     }
     //Metoda per mostrar totes les insertccions de la taula categoria
     public static function mostrarTots() {
@@ -57,9 +57,9 @@ class Personal {
                                  $direccio_personalExtern, $naixement_personalExtern, $nss_personalExtern, $iban_personalExtern, $id_idioma) {
          $db = Db::getInstance();
         
-        $req = $db->prepare('INSERT INTO personalextern SET dni_personalExtern = :dni_personalExtern, nom_personalExtern = :nom_personalExtern, primer_cognom_personalExtern = :primer_cognom_personalExtern, segon_cognom_personalExtern = :segon_cognom_personalExtern, email_personalExtern = :email_personalExtern, telefon_personalExtern = :telefon_personalExtern, direccio_personalExtern = :direccio_personalExtern, nss_personalExtern = :nss_personalExtern, iban_personalExtern = :iban_personalExtern, id_idioma = :id_idioma');
+        $req = $db->prepare('INSERT INTO personalextern SET dni_personalExtern = :dni_personalExtern, nom_personalExtern = :nom_personalExtern, primer_cognom_personalExtern = :primer_cognom_personalExtern, segon_cognom_personalExtern = :segon_cognom_personalExtern, email_personalExtern = :email_personalExtern, telefon_personalExtern = :telefon_personalExtern, direccio_personalExtern = :direccio_personalExtern, naixement_personalExtern = naixement_personalExtern, nss_personalExtern = :nss_personalExtern, iban_personalExtern = :iban_personalExtern');
 
-        if ($req->execute(array('dni_personalExtern' => $dni_personalExtern, 'nom_personalExtern' => $nom_personalExtern, 'primer_cognom_personalExtern' => $primer_cognom_personalExtern, 'segon_cognom_personalExtern' => $segon_cognom_personalExtern, 'email_personalExtern' => $email_personalExtern, 'telefon_personalExtern' => $telefon_personalExtern, 'direccio_personalExtern' => $direccio_personalExtern, 'nss_personalExtern' => $nss_personalExtern, 'iban_personalExtern' => $iban_personalExtern, 'id_idioma' => $id_idioma))) {
+        if ($req->execute(array('dni_personalExtern' => $dni_personalExtern, 'nom_personalExtern' => $nom_personalExtern, 'primer_cognom_personalExtern' => $primer_cognom_personalExtern, 'segon_cognom_personalExtern' => $segon_cognom_personalExtern, 'email_personalExtern' => $email_personalExtern, 'telefon_personalExtern' => $telefon_personalExtern, 'direccio_personalExtern' => $direccio_personalExtern,'naixement_personalExtern' =>$naixement_personalExtern, 'nss_personalExtern' => $nss_personalExtern, 'iban_personalExtern' => $iban_personalExtern))) {
             return true;
         } else {
             return false;
@@ -72,9 +72,9 @@ class Personal {
         
         $db = Db::getInstance();
         
-        $req = $db->prepare('UPDATE personalextern SET nom_personalExtern = :nom_personalExtern, primer_cognom_personalExtern = :primer_cognom_personalExtern, segon_cognom_personalExtern = :segon_cognom_personalExtern, email_personalExtern = :email_personalExtern, telefon_personalExtern = :telefon_personalExtern, direccio_personalExtern = :direccio_personalExtern, nss_personalExtern = :nss_personalExtern, iban_personalExtern = :iban_personalExtern, id_idioma = :id_idioma WHERE dni_personalExtern = :dni_personalExtern');
+        $req = $db->prepare('UPDATE personalextern SET nom_personalExtern = :nom_personalExtern, primer_cognom_personalExtern = :primer_cognom_personalExtern, segon_cognom_personalExtern = :segon_cognom_personalExtern, email_personalExtern = :email_personalExtern, telefon_personalExtern = :telefon_personalExtern, direccio_personalExtern = :direccio_personalExtern, naixement_personalExtern = naixement_personalExtern, nss_personalExtern = :nss_personalExtern, iban_personalExtern = :iban_personalExtern, id_idioma = :id_idioma WHERE dni_personalExtern = :dni_personalExtern');
 
-        if ($req->execute(array('dni_personalExtern' => $dni_personalExtern, 'nom_personalExtern' => $nom_personalExtern, 'primer_cognom_personalExtern' => $primer_cognom_personalExtern, 'segon_cognom_personalExtern' => $segon_cognom_personalExtern, 'email_personalExtern' => $email_personalExtern, 'telefon_personalExtern' => $telefon_personalExtern, 'direccio_personalExtern' => $direccio_personalExtern, 'nss_personalExtern' => $nss_personalExtern, 'iban_personalExtern' => $iban_personalExtern, 'id_idioma' => $id_idioma))) {
+        if ($req->execute(array('dni_personalExtern' => $dni_personalExtern, 'nom_personalExtern' => $nom_personalExtern, 'primer_cognom_personalExtern' => $primer_cognom_personalExtern, 'segon_cognom_personalExtern' => $segon_cognom_personalExtern, 'email_personalExtern' => $email_personalExtern, 'telefon_personalExtern' => $telefon_personalExtern, 'direccio_personalExtern' => $direccio_personalExtern,'naixement_personalExtern' =>$naixement_personalExtern , 'nss_personalExtern' => $nss_personalExtern, 'iban_personalExtern' => $iban_personalExtern, 'id_idioma' => $id_idioma))) {
             return true;
         } else {
             return false;

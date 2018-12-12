@@ -1,4 +1,7 @@
+<br>
 <h2>Listado de el personal:</h2>
+<a href='<?php echo constant('URL');?>personal/formCreate'>Insertar Personal</a>
+<br>
 <?php foreach($pers as $personal) { ?>
     <p>
         <?php echo $personal->nom_personalExtern; ?>
