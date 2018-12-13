@@ -1,0 +1,110 @@
+@import url("reset.css");
+a:link, a:visited {
+    color: #eb1313;
+}
+a:hover {
+    color: red;
+}
+a:active {
+    color: #eb1313;
+}
+input {
+    border-radius: 1em;
+}
+hr {
+    color: white;
+}
+h1 {
+    float: left;
+    clear: both;
+    padding: 1em 0;
+    width: 100%;
+    font-size: 1.5em;
+    letter-spacing: 1em;
+    
+}
+body, .container {
+    background-color: #606060;
+    font-family: Arial, Helvetica;
+}
+.container {
+    line-height: 1;
+    padding: 0 10em;
+    color: white;
+}
+.header {
+    width: 100%;
+    height: 5em;
+    float: left;
+    clear: both;
+    background-color: #242424;
+    margin-bottom: 1em;
+    padding: 0;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 0px 0px 1em 1em;
+}
+.header .logo {
+    padding: 0.5em 4em;
+    height: 4em;
+    float: left;
+}
+.header .menu {
+    padding: 0em 1em;
+    float: right;
+}
+.header .nav {
+    margin: 0 0.5em;
+    color: white;
+    float: left;
+}
+.header .nav a {
+    float: left;
+    width: 4.5em;
+    font-weight: bold;
+    background-color: darkgray;
+    padding: 1.5em 2.5em;
+    border-width: 0 0.5px 1px 0.5px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 0px 0px 1em 1em;
+    text-align: center;
+}
+.header .nav a:hover {
+    background-color: lightgray;
+}
+.header .logout {
+    padding: 0.5em;
+    height: 4em;
+    float: left;
+}
+.main {
+    width: 100%;
+    float: left;
+    clear: both;
+    text-align: center;
+    padding: 2em 0em;
+}
+.content {
+    width: 100%;
+    float: left;
+    clear: both;
+    padding: 1em 0;
+}
+.spacing_login div {
+    padding: 1em 0;
+}
+.input {
+    padding: 1em 0;
+}
+.footer {
+    width: 100%;
+    float: left;
+    clear: both;
+    text-align: center;
+    padding: 1em 0em;
+}
+.footer .info {
+    padding: 1em 1em;
+}
