@@ -26,6 +26,7 @@ h1 {
 body, .container {
     background-color: #606060;
     font-family: Arial, Helvetica;
+	font-size: 16px;
 }
 .container {
     line-height: 1;
@@ -85,6 +86,9 @@ body, .container {
     clear: both;
     text-align: center;
     padding: 2em 0em;
+	border-width: 1px 0;
+	border-style: solid;
+	border-color: white;
 }
 .content {
     width: 100%;

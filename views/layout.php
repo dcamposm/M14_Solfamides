@@ -24,13 +24,9 @@
                 </div>
             </header>
             
-            <hr>
-            
             <div class="main">
                 <?php require_once('routes.php'); ?>
             </div>
-            
-            <hr>
             
             <footer>
                 <div class="footer">
