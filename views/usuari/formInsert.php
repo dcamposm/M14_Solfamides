@@ -17,10 +17,10 @@
     <input type='text' name='cog2'/>
     
     <p>Email</p>
-    <input type='text' name='email'/> 
+    <input type='email' name='email'/> 
     
     <p>Telefon</p>
     <input type='text' name='tel'/>
-
+    <br>
     <button type="submit">Crear</button>
 </form>

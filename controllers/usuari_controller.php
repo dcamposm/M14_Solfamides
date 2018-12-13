@@ -45,11 +45,11 @@ class UsuariController {
     }
     //Metoda que executa el metoda update del model categoria
     public function update() {
-        if (!isset($_POST['alias'])){
+        if (!isset($_GET['alias'])){
             return call('pages', 'error');
         }
 
-        Usuari::modificar($_GET['alias'],$_POST['nom'],$_POST['cog1'],$_POST['scog2'],$_POST['email'],$_POST['tel'],$_POST['pass'],$_POST['id_rol']);
+        Usuari::modificar($_GET['alias'],$_POST['nom'],$_POST['cog1'],$_POST['cog2'],$_POST['email'],$_POST['tel'],$_POST['pass']);
         
         $users = Usuari::mostrarTots();
         
